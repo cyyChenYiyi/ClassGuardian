@@ -1,1 +1,62 @@
-<p>hello</p>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>课间守护软件</title>
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+    .bg {
+        background-image: url('https://static.codemao.cn/coco/player/unstable/ryR63_qP0.image/png?hash=FluJJjCT7SrGTOYFtlgTV663c6l6'); /* 在此处填入你的图片链接 */
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .centered-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white; /* 设置文本颜色 */
+    }
+    .text-logo-container {  
+    display: flex;  
+    align-items: center;  
+    justify-content: center;  
+    min-width: 1200px; /* 设置最小宽度以容纳文本和LOGO */  
+    }
+    .text {
+        font-size: 36px; /* 增加文本大小 */
+        margin-right: 20px; /* 在文本和LOGO之间添加一些空间 */
+    }
+    .logo {
+        height: 80px; /* 增加LOGO大小 */
+    }
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        color: #fff; /* 设置底部文本颜色 */
+        font-size: 12px;
+    }
+</style>
+</head>
+<body>
+<div class="bg">
+    <div class="centered-content">
+        <div class="text-logo-container"> <!-- 使用flexbox布局 -->
+            <span class="text">新一代课间守护软件，用</span>
+            <img src="https://static.codemao.cn/coco/player/unstable/SJ144z-wR.image/png?hash=FsPNA0_GwXenLjrC6mxPnzk6elbj" alt="Logo" class="logo">
+        </div>
+    </div>
+    <div class="footer">
+        ©️2024-2025 Chen Yiyi
+    </div>
+</div>
+</body>
+</html>
