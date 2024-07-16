@@ -9,7 +9,7 @@
 body, html {
     height: 100%;
     margin: 0;
-    font-family: '微软雅黑', Arial, sans-serif; /* 添加微软雅黑字体，并作为首选 */
+    font-family: '微软雅黑', Arial, sans-serif;
 }
 .bg {
     background-image: url('https://static.codemao.cn/coco/player/unstable/ryR63_qP0.image/png?hash=FluJJjCT7SrGTOYFtlgTV663c6l6');
@@ -23,15 +23,15 @@ body, html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center; /* 将文本和按钮居中对齐 */
+    text-align: center;
     color: white;
 }
 .text-logo-container {
     display: flex;
-    flex-direction: column; /* 更改方向为垂直堆叠 */
-    align-items: center; /* 居中对齐所有子元素 */
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    min-width: 1200px; /* 调整最小宽度 */
+    min-width: 300px;
 }
 .text {
     font-size: 4vw;
@@ -62,6 +62,23 @@ body, html {
     font-size: 1vw;
     max-font-size: 12px;
 }
+/* 新增轮播图片卡片样式 */
+.carousel {
+    position: absolute;
+    top: 66%; /* 设置为页面高度的三分之二处 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 960px;
+    overflow: hidden; /* 隐藏溢出的部分 */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.carousel img {
+    width: 100%;
+    display: block; /* 避免图片下方有空隙 */
+    transition: transform 0.5s ease;
+}
 </style>
 </head>
 <body>
@@ -71,6 +88,12 @@ body, html {
     <span class="text">新一代课间守护软件，用</span>
     <img src="https://static.codemao.cn/coco/player/unstable/H1RvGK9DC.image/png?hash=FozLLt11Axt0ZeZCeEDpq6lvR-2P" alt="Logo" class="logo">
     <a href="#" class="button">立即下载</a>
+</div>
+<!-- 新增轮播图片卡片 -->
+<div class="carousel">
+    <img src="your-image-url-1.png" alt="Image 1">
+    <img src="your-image-url-2.png" alt="Image 2">
+    <img src="your-image-url-3.png" alt="Image 3">
 </div>
 </div>
 <div class="footer">
