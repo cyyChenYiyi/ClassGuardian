@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClassGuardian 启动页面</title>
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+.video-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: black; /* 加载时背景颜色 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loading {
+    position: absolute;
+    color: #fff; /* 文字颜色 */
+    z-index: 3;
+}
+video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    cursor: default;
+}
+.skip-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 2;
+}
+</style>
+</head>
+<body>
+<div class="video-container">
+    <div class="loading">加载中...</div> <!-- 加载提示 -->
+    <video autoplay muted playsinline>
+        <source src="https://static.codemao.cn/coco/player/unstable/SkiopDQd0.video/mp4?hash=FkuvqDozvmXa8xMOcCs3BWQbtwm0" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <button class="skip-button" onclick="redirect()">跳过</button>
+</div>
+<script>
+function redirect() {
+    window.location.href = 'https://cyychenyiyi.github.io/ClassGuardian/2.0shouhu';
+}
+
+// 添加事件监听器
+document.querySelector('video').addEventListener('ended', function() {
+    redirect();
+});
+
+const video = document.querySelector('video');
+const loadingIndicator = document.querySelector('.loading');
+
+// 视频加载开始时显示加载提示
+video.addEventListener('loadstart', function() {
+    loadingIndicator.style.display = 'block';
+});
+
+// 视频可以播放时隐藏加载提示
+video.addEventListener('canplaythrough', function() {
+    loadingIndicator.style.display = 'none';
+});
+</script>
+</body>
+</html>
