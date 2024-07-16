@@ -4,87 +4,78 @@
 <meta charset="UTF-8">
 <title>官网 | ClassGuardian</title>
 <link rel="icon" href="https://static.codemao.cn/coco/player/unstable/H1hoWF9wR.image/png?hash=FvDjodFEBdUGs31c5YMPVE30iT_h">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 添加视口元标签以支持响应式设计 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body, html {
-  height: 100%;
-  margin: 0;
-  font-family: Arial, sans-serif;
+    height: 100%;
+    margin: 0;
+    font-family: '微软雅黑', Arial, sans-serif; /* 添加微软雅黑字体，并作为首选 */
 }
 .bg {
-  background-image: url('https://static.codemao.cn/coco/player/unstable/ryR63_qP0.image/png?hash=FluJJjCT7SrGTOYFtlgTV663c6l6');
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+    background-image: url('https://static.codemao.cn/coco/player/unstable/ryR63_qP0.image/png?hash=FluJJjCT7SrGTOYFtlgTV663c6l6');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .centered-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; /* 将文本和按钮居中对齐 */
+    color: white;
 }
 .text-logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 1200px; /* 调整最小宽度以适应较小屏幕 */
+    display: flex;
+    flex-direction: column; /* 更改方向为垂直堆叠 */
+    align-items: center; /* 居中对齐所有子元素 */
+    justify-content: center;
+    min-width: 300px; /* 调整最小宽度 */
 }
 .text {
-  font-size: 4vw; /* 使用视窗宽度单位来使文本大小适应不同屏幕 */
-  margin-right: 20px;
+    font-size: 4vw;
 }
 .logo {
-  height: 10vw; /* 使用视窗宽度单位来调整LOGO大小 */
-  max-height: 80px; /* 限制LOGO的最大高度 */
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  font-size: 1vw;
-  max-font-size: 12px; /* 限制字体的最大尺寸 */
-}
-@media (max-width: 600px) {
-  .text-logo-container {
-    flex-direction: column; /* 在小屏幕上将文本和LOGO堆叠显示 */
-  }
-  .text {
-    margin-right: 0;
-    margin-bottom: 10px; /* 为文本和LOGO之间添加垂直空间 */
-  }
+    height: 10vw;
+    max-height: 80px;
 }
 .button {
-  background-color: #4CAF50; /* 按钮背景颜色 */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 10px;
-  border-radius: 12px; /* 圆角边框 */
-  cursor: pointer;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 1vw;
+    max-font-size: 12px;
 }
 </style>
 </head>
 <body>
 <div class="bg">
-  <div class="centered-content">
-    <div class="text-logo-container">
-      <span class="text">新一代课间守护软件，用</span>
-      <img src="https://static.codemao.cn/coco/player/unstable/H1RvGK9DC.image/png?hash=FozLLt11Axt0ZeZCeEDpq6lvR-2P" alt="Logo" class="logo">
-      <a href="#" class="button">立即下载</a> <!-- 在此填入相应的链接 -->
-    </div>
-  </div>
-
-  <div class="footer">
+<div class="centered-content">
+<div class="text-logo-container">
+    <span class="text">新一代课间守护软件，用</span>
+    <img src="https://static.codemao.cn/coco/player/unstable/H1RvGK9DC.image/png?hash=FozLLt11Axt0ZeZCeEDpq6lvR-2P" alt="Logo" class="logo">
+    <a href="#" class="button">立即下载</a>
+</div>
+</div>
+<div class="footer">
     ©️2024-2025 Chen Yiyi
-  </div>
+</div>
 </div>
 </body>
 </html>
