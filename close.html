@@ -59,12 +59,12 @@ button {
 <div id="card">
 <div class="section">
 <img id="qr-image" alt="二维码未显示，请联系电教员，抱歉。">
-<p>尊敬的老师您好，请您使用微信扫码查看密码和校验码</p>
+<p>尊敬的老师您好，请您使用微信或其他支持扫码的APP扫码查看密码和校验码，感谢您的合作</p>
 </div>
 <div id="divider"></div>
 <div class="section">
 <input type="password" id="password" class="input-field" placeholder="输入密码">
-<input type="text" id="verificationCode" class="input-field" placeholder="输入校验码">
+<input type="password" id="verificationCode" class="input-field" placeholder="输入校验码">
 <button id="verifyButton">确认</button>
 </div>
 </div>
@@ -74,7 +74,7 @@ window.onload = function() {
         password: Math.floor(Math.random() * 10000),
         verificationCode: Math.floor(Math.random() * 10000)
     };
-    const qrText = `密码: ${codes.password}, 实时校验码: ${codes.verificationCode}`;
+    const qrText = `password: ${codes.password}, jiaoyanma: ${codes.verificationCode}`;
     const qrSize = 200; // 二维码的尺寸
     const qrURL = `https://api.qrtool.cn/?text=${encodeURIComponent(qrText)}&size=150&margin=0&level=H`;
     document.getElementById('qr-image').src = qrURL;
