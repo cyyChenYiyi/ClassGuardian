@@ -74,7 +74,7 @@ window.onload = function() {
         password: Math.floor(Math.random() * 10000),
         verificationCode: Math.floor(Math.random() * 10000)
     };
-    const qrText = `password: ${codes.password}, jiaoyanma: ${codes.verificationCode}`;
+    const qrText = `https://cyychenyiyi.github.io/ClassGuardian/miama?mima=${codes.password}&jiaoyanma=${codes.verificationCode}`;
     const qrSize = 200; // 二维码的尺寸
     const qrURL = `https://api.qrtool.cn/?text=${encodeURIComponent(qrText)}&size=150&margin=0&level=H`;
     document.getElementById('qr-image').src = qrURL;
