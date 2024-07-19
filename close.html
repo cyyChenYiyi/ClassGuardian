@@ -14,11 +14,13 @@ body {
 }
 #card {
     background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px); /* 添加毛玻璃效果 */
     width: 800px;
     height: 350px;
     display: flex;
     border: 1px solid #ccc;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 20px; /* 圆角效果 */
 }
 .section {
     flex: 1;
@@ -44,6 +46,12 @@ button {
     padding: 10px;
     background: white;
     box-shadow: 0 0px 0px rgba(0,0,0,0.25);
+    border-radius: 10px; /* 圆角效果 */
+}
+/* 调整提示文本的内边距 */
+p {
+    padding: 10px;
+    text-align: center;
 }
 /* 添加返回按钮的样式 */
 #back-button {
@@ -53,6 +61,7 @@ button {
     cursor: pointer;
 }
 </style>
+
 </head>
 <body>
 <img id="back-button" src="https://static.codemao.cn/coco/player/unstable/rkL7m-SuC.image/png?hash=FlwaI54dHYkkwWs4hkffhMJiY0_9" alt="返回" width="30" height="30">
