@@ -335,6 +335,16 @@
         margin-top: 10px;
         text-align: center;
     }
+    .info-panel {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 100;
+    }
+
 </style>
 <script>
     // 敏感词列表
@@ -617,6 +627,26 @@
     }
 
     }
+    function updateDateTimeWeather() {
+        const date = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const dateTimeFormat = new Intl.DateTimeFormat('zh-CN', options);
+        document.getElementById('datetime').textContent = dateTimeFormat.format(date);
+    
+        // 调用天气API获取天气信息
+        fetch('https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=Beijing&lang=zh')
+        .then(response => response.json())
+        .then(data => {
+            const weatherText = `${data.current.temp_c}°C, ${data.current.condition.text}`;
+            document.getElementById('weather').textContent = weatherText;
+        })
+        .catch(error => console.error('获取天气信息失败:', error));
+    }
+    
+    // 每分钟更新时间和天气
+    setInterval(updateDateTimeWeather, 60000);
+    window.onload = updateDateTimeWeather;
+
 
 </script>
 </head>
@@ -628,6 +658,10 @@
     <img class="logo" src="https://static.codemao.cn/coco/player/unstable/SyqJEzZvR.image/png?hash=FhJxzADowuS9ORXVu5KDhP2AJP9Z" alt="加载图标">
     <div class="message">加载ClassGuardian网页组件中…</div>
     <div class="message">所有代码由陈奕羿编写，未经允许禁止转载、改编、发布至网络平台</div>
+</div>
+<div class="info-panel">
+    <div id="datetime">加载中...</div>
+    <div id="weather">获取天气中...</div>
 </div>
 <h1>天启守护架构守护已开启</h1>
 <p>距离上课还有：</p>
