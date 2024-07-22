@@ -27,7 +27,7 @@
         background-position: center; /* 图片居中显示 */
         
         /* 添加高斯模糊遮罩 */
-        backdrop-filter: blur(4px); /* 可以调整模糊程度 */
+        backdrop-filter: blur(3px); /* 可以调整模糊程度 */
     }
 
     h1 {
@@ -339,7 +339,7 @@
     position: fixed;
     top: 10px;
     right: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0);
     padding: 10px;
     border-radius: 5px;
     z-index: 100;
@@ -386,31 +386,18 @@
         }, 1000);
     }
 
-    // 尝试播放指定的音频，仅当用户已交互过后
-    function tryPlayAudio(audioId) {
-        var audioElement = document.getElementById(audioId);
-        if (audioElement && typeof audioElement.play === 'function') {
-            audioElement.play().catch(e => console.error("播放失败: ", e));
-        } else {
-            console.error("找不到音频元素: ", audioId);
-        }
+
+
+    function updateDateTime() {
+        const date = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        const dateTimeFormat = new Intl.DateTimeFormat('zh-CN', options);
+        document.getElementById('datetime').textContent = dateTimeFormat.format(date);
     }
 
-    // 添加事件监听器，以激活音频播放功能，而不立即播放
-    document.addEventListener('click', function activateAudio() {
-        document.querySelectorAll('audio').forEach(audio => {
-            // 添加激活音频的逻辑，但不播放
-            if (audio.paused) {
-                audio.play().then(() => {
-                    audio.pause(); // 播放后立即暂停，确保音频被“激活”
-                }).catch(e => {
-                    console.error("音频激活失败: ", e);
-                });
-            }
-        });
-        document.removeEventListener('click', activateAudio); // 移除监听器以防多次触发
-    });
-
+    // 每秒更新时间
+    setInterval(updateDateTime, 1000);
+    window.onload = updateDateTime;
 
 
 
@@ -627,32 +614,13 @@
     }
 
     }
-    function updateDateTimeWeather() {
-        const date = new Date();
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        const dateTimeFormat = new Intl.DateTimeFormat('zh-CN', options);
-        document.getElementById('datetime').textContent = dateTimeFormat.format(date);
-    
-        // 调用天气API获取天气信息
-        fetch('https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=Beijing&lang=zh')
-        .then(response => response.json())
-        .then(data => {
-            const weatherText = `${data.current.temp_c}°C, ${data.current.condition.text}`;
-            document.getElementById('weather').textContent = weatherText;
-        })
-        .catch(error => console.error('获取天气信息失败:', error));
-    }
-    
-    // 每分钟更新时间和天气
-    setInterval(updateDateTimeWeather, 60000);
-    window.onload = updateDateTimeWeather;
+
 
 
 </script>
 </head>
 <body>
-<audio id="fiveMinuteAudio" src="https://static.codemao.cn/coco/player/unstable/SkE0mQzuC.audio/mpeg?hash=FkRnoowgnk_UO1zQQtYOrKtZNpoo" preload="auto"></audio>
-<audio id="twoMinuteAudio" src="https://static.codemao.cn/coco/player/unstable/rJ8fNQMu0.audio/mpeg?hash=Fj8dYqC9OWZtyRc6aC4cn9hrvI8f" preload="auto"></audio>
+
 
 <div class="loading-screen">
     <img class="logo" src="https://static.codemao.cn/coco/player/unstable/SyqJEzZvR.image/png?hash=FhJxzADowuS9ORXVu5KDhP2AJP9Z" alt="加载图标">
@@ -661,7 +629,6 @@
 </div>
 <div class="info-panel">
     <div id="datetime">加载中...</div>
-    <div id="weather">获取天气中...</div>
 </div>
 <h1>天启守护架构守护已开启</h1>
 <p>距离上课还有：</p>
