@@ -1,98 +1,63 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>官网 | ClassGuardian</title>
-<link rel="icon" href="https://static.codemao.cn/coco/player/unstable/H1hoWF9wR.image/png?hash=FvDjodFEBdUGs31c5YMPVE30iT_h">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stable Diffusion WebUI</title>
 <style>
-body, html {
-    height: 100%;
-    margin: 0;
-    font-family: '微软雅黑', Arial, sans-serif;
-}
-.bg {
-    background-image: url('https://static.codemao.cn/coco/player/unstable/ryR63_qP0.image/png?hash=FluJJjCT7SrGTOYFtlgTV663c6l6');
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.centered-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #09051F;
     color: white;
-}
-.text-logo-container {
+    margin: 0;
+    padding: 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    min-width: 300px;
+    align-items: center;
+    height: 100vh;
 }
-.text {
-    font-size: 4vw;
+.container {
+    text-align: center;
+}
+h1 {
+    font-size: 50px; /* 字体大小增加 */
+}
+
+.download-buttons button {
+    background-color: transparent; /* 设置透明背景 */
+    border: none;
+    padding: 0; /* 移除填充，适应图片大小 */
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 265px; /* 调整宽度，原始比例一半 */
+    height: 60px; /* 调整高度，原始比例一半 */
+}
+.download-buttons button:hover {
+    opacity: 0.8; /* 鼠标悬停时变半透明 */
+}
+p {
+    margin: 30px 0 30px;
+    font-size: 33px;
 }
 .logo {
-    height: 10vw;
-    max-height: 80px;
-}
-.button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 10px;
-    border-radius: 12px;
-    cursor: pointer;
-}
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    color: #fff;
-    font-size: 1vw;
-    max-font-size: 12px;
-}
-/* 新增轮播图片卡片样式 */
-.carousel {
-    position: absolute;
-    top: 66%; /* 设置为页面高度的三分之二处 */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    max-width: 960px;
-    overflow: hidden; /* 隐藏溢出的部分 */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-.carousel img {
-    width: 100%;
-    display: block; /* 避免图片下方有空隙 */
-    transition: transform 0.5s ease;
+    position: absolute; /* 设置LOGO位置 */
+    top: 10px;
+    left: 10px;
+    width: 250px; /* 维持LOGO大小 */
+    height: auto; /* 保持比例 */
 }
 </style>
 </head>
 <body>
-<div class="bg">
-<div class="centered-content">
-<div class="text-logo-container">
-    <span class="text">新一代课间守护软件，用</span>
-    <img src="https://static.codemao.cn/coco/player/unstable/H1RvGK9DC.image/png?hash=FozLLt11Axt0ZeZCeEDpq6lvR-2P" alt="Logo" class="logo">
-    <a href="#" class="button">立即下载</a>
-</div>
+<img class="logo" src="https://static.codemao.cn/coco/player/unstable/H1RvGK9DC.image/png?hash=FozLLt11Axt0ZeZCeEDpq6lvR-2P" alt="LOGO">
+<div class="container">
+<h1>ClassGuardian-新一代课间守护软件</h1>
+<p>让你再也没有学生课间玩电脑的烦恼</p>
 
-</div>
-<div class="footer">
-    ©️2024-2025 Chen Yiyi
+<div class="download-buttons">
+<button onclick="window.location.href='#';" style="background-image: url('https://www.easyartx.com/assets/img_3-9428196a.png'); background-size: cover;"></button>
+<button onclick="window.location.href='#';" style="background-image: url('https://www.easyartx.com/assets/img_4-ba5e7cef.png'); background-size: cover;"></button>
 </div>
 </div>
 </body>
