@@ -597,6 +597,7 @@
             allElements.forEach(el => el.style.display = 'none'); // 隐藏所有相关元素
             document.querySelector('.mode-option:nth-child(2)').classList.add('active'); // 添加active类到"极简"选项
         }
+    }
     function startBreakCountdown() {
         const now = new Date();
         const { breakTime, duration } = getNextBreakTime();
@@ -608,13 +609,10 @@
             document.body.classList.add('class-time');
             setTimeout(() => {
                 document.body.classList.remove('class-time');
-                closeBrowserWindow(); // 上课后5秒自动关闭窗口
-            }, 5000);
+                window.location.href = 'https://cyychenyiyi.github.io/ClassGuardian/closeok'; // 添加跳转链接
+            }, 1000);
         });
     }
-
-    }
-
 
 
 </script>
