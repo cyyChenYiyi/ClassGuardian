@@ -9,6 +9,33 @@
     h3 {
     font-size: 1.75em; /* 设置h1标签的字体大小为1.75em */
     }
+    .loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .spinner {
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
     body {
         font-family: 'Microsoft YaHei';
         background-image: url("https://static.codemao.cn/coco/player/unstable/rk--rV-8C.image/webp?hash=Fg92g8NFfyBDTArS0OMZDlXoH2Av");
@@ -621,20 +648,20 @@
 
 
 <div class="loading-screen">
-    <img class="logo" src="https://static.codemao.cn/coco/player/unstable/SyqJEzZvR.image/png?hash=FhJxzADowuS9ORXVu5KDhP2AJP9Z" alt="加载图标">
-    <div class="message">加载ClassGuardian网页组件中…</div>
-    <div class="message">所有代码由陈奕羿编写，未经允许禁止转载、改编、发布至网络平台</div>
+    <div class="spinner"></div>
 </div>
+    
 <div class="info-panel">
     <div id="datetime">加载中...</div>
 </div>
 <h1>天启守护架构守护已开启</h1>
 <p>距离上课还有：</p>
-<div class="timer">1713</div>
+<div class="timer">loading……</div>
 <div class="schedule">
     <img src="https://static.codemao.cn/coco/player/unstable/SkHXq4-LA.image/png?hash=Fmw37gZARRPHO2lNi93GE0RcAq0C" alt="课程表图片">
 </div>
-<button style="background-color: white; color: black; font-size: 18px; border: none; border-radius: 8px; transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.1)';" onmouseout="this.style.transform='scale(1)';" onclick="window.location.href='https://cyychenyiyi.github.io/ClassGuardian/close';">点我开始上课</button>
+<button style="background-color: white; color: black; font-size: 22px; border: none; border-radius: 8px; transition: transform 0.3s ease-in-out; padding: 12px 24px;" onmouseover="this.style.transform='scale(1.1)';" onmouseout="this.style.transform='scale(1)';" onclick="window.location.href='https://cyychenyiyi.github.io/ClassGuardian/close';">点我开始上课</button>
+
 
 <img class="logo" src="https://cyychenyiyi.github.io/ClassGuardian/logo_white.png" alt="LOGO">
 </body>
