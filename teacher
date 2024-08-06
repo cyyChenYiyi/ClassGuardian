@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>课堂欢迎页面</title>
+<style>
+  body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  h1 {
+    font-size: 48px;
+    text-align: center; /* 确保标题也是居中的 */
+  }
+  .button {
+    background-color: white; /* 按钮背景设为纯白色 */
+    color: black; /* 按钮文字颜色改为黑色以增强对比 */
+    border: none;
+    padding: 15px 30px;
+    font-size: 24px;
+    cursor: pointer;
+    animation: pulse 2s infinite;
+    outline: none;
+    border-radius: 20px; /* 添加圆角 */
+    display: block; /* 使按钮成为块级元素 */
+    margin: 20px auto; /* 上下边距20px，左右自动（实现水平居中） */
+  }
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+</style>
+</head>
+<body>
+  <div>
+    <h1>尊敬的老师您好</h1>
+    <button class="button" onclick="window.location.href='https://cyychenyiyi.github.io/ClassGuardian/close';">开始上课</button>
+  </div>
+</body>
+</html>
