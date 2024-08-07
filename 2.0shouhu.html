@@ -35,37 +35,42 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
+    body {  
+            font-family: 'Microsoft YaHei';  
+            background-image: url("https://cyychenyiyi.github.io/ClassGuardian/New-term-white.png");  
+            background-size: cover;  
+            background-position: center;  
+            color: #ffffff;  
+            display: flex;  
+            flex-direction: column;  
+            justify-content: center;  
+            align-items: center;  
+            height: 100vh;  
+            margin: 0;  
+            min-height: 100vh; /* 确保至少占据视口高度 */  
+    } 
 
-    body {
-        font-family: 'Microsoft YaHei';
-        background-image: url("https://cyychenyiyi.github.io/ClassGuardian/New-term-white.png");
-        color: 	#ffffff;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        transition: background-color 0.5s, color 0.5s;
-        overflow: hidden;
-        
-        /* 确保背景图片完整显示 */
-        background-size: cover;
-        background-position: center; /* 图片居中显示 */
-        
-        /* 添加高斯模糊遮罩 */
-        /* backdrop-filter: blur(3px);  */
-    }
-
-    h1 {
-        font-size: 2.5rem;
-    }
-    p {
-        font-size: 2rem;
-    }
-    .timer {
-        font-size: 3.4rem;
-        margin-top: 20px;
+    /* 减少p标签之间的间距 */  
+    p {  
+        margin: 10px 0; /* 调整这里的上下边距来减少间距 */  
+        font-size: 2rem;  
+    }  
+    
+    /* 减少距离上课时间显示与文本的间距 */  
+    .timer {  
+        margin-top: 10px; /* 减少顶部边距 */  
+        font-size: 3.4rem;  
+    }  
+    
+    /* 如果需要，还可以调整h1和下面的p标签之间的间距 */  
+    h1 {  
+        margin-bottom: 10px; /* 减少h1标签下面的间距 */  
+        font-size: 2.5rem;  
+    }  
+    
+    /* 调整按钮与上面文本的间距 */  
+    button {  
+        margin-top: 20px; /* 根据需要调整 */  
     }
     .class-time {
     background-color: #ffffff;
@@ -677,7 +682,7 @@
 <p>距离上课还有：</p>
 <div class="timer">loading……</div>
 <div class="schedule">
-    <img src="https://static.codemao.cn/coco/player/unstable/SkHXq4-LA.image/png?hash=Fmw37gZARRPHO2lNi93GE0RcAq0C" alt="课程表图片">
+    <img src="https://cyychenyiyi.github.io/ClassGuardian/schedule.png" alt="课程表图片">
 </div>
 <button style="background-color: white; color: black; font-size: 22px; border: none; border-radius: 8px; transition: transform 0.3s ease-in-out; padding: 12px 24px;" onmouseover="this.style.transform='scale(1.1)';" onmouseout="this.style.transform='scale(1)';" onclick="window.location.href='https://cyychenyiyi.github.io/ClassGuardian/close';">开始上课</button>
 <footer class="disclaimer">
