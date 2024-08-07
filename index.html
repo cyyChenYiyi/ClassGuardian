@@ -1,64 +1,121 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>官网 | ClassGuardian</title>
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #09051F;
-    color: white;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-.container {
-    text-align: center;
-}
-h1 {
-    font-size: 50px; /* 字体大小增加 */
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>官网 | ClassGuardian</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #09051F;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            font-size: 50px;
+        }
+        .download-buttons button {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 265px;
+            height: 60px;
+            background-size: cover;
+        }
+        .download-buttons button:hover {
+            opacity: 0.8;
+        }
+        p {
+            margin: 30px 0;
+            font-size: 33px;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 250px;
+            height: auto;
+        }
+        /* 修改的样式 */
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 10px;
+            color: black; /* 设置文本颜色为黑色 */
+            font-size: 16px; /* 设置字体大小为正常文本大小 */
+        }
 
-.download-buttons button {
-    background-color: transparent; /* 设置透明背景 */
-    border: none;
-    padding: 0; /* 移除填充，适应图片大小 */
-    margin: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 265px; /* 调整宽度，原始比例一半 */
-    height: 60px; /* 调整高度，原始比例一半 */
-}
-.download-buttons button:hover {
-    opacity: 0.8; /* 鼠标悬停时变半透明 */
-}
-p {
-    margin: 30px 0 30px;
-    font-size: 33px;
-}
-.logo {
-    position: absolute; /* 设置LOGO位置 */
-    top: 10px;
-    left: 10px;
-    width: 250px; /* 维持LOGO大小 */
-    height: auto; /* 保持比例 */
-}
-</style>
+        .modal-content h2 {
+            font-size: 24px; /* 设置标题字体大小 */
+        }
+        .modal-buttons button {
+            background-color: #5C4B99; /* 紫色背景 */
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-<img class="logo" src="logo_white.png" alt="LOGO">
-<div class="container">
-<h1>ClassGuardian-新一代课间守护软件</h1>
-<p>让你再也没有学生课间玩电脑的烦恼</p>
-
-<div class="download-buttons">
-<button onclick="window.location.href='#';" style="background-image: url('https://www.easyartx.com/assets/img_3-9428196a.png'); background-size: cover;"></button>
-<button onclick="window.location.href='#';" style="background-image: url('https://www.easyartx.com/assets/img_4-ba5e7cef.png'); background-size: cover;"></button>
-</div>
-</div>
+    <img class="logo" src="logo_white.png" alt="LOGO">
+    <div class="container">
+        <h1>ClassGuardian-新一代课间守护软件</h1>
+        <p>让你再也没有学生课间玩电脑的烦恼</p>
+        <div class="download-buttons">
+            <button onclick="showModal();" style="background-image: url('https://www.easyartx.com/assets/img_3-9428196a.png');"></button>
+            <button onclick="showModal();" style="background-image: url('https://www.easyartx.com/assets/img_4-ba5e7cef.png');"></button>
+        </div>
+    </div>
+    <div id="modal">
+        <div class="modal-content">
+            <h2>阅读并同意《用户协议和隐私政策》</h2>
+            <p>请您阅读并同意<a href="https://cyychenyiyi.github.io/ClassGuardian/User-Agreement" style="color: blue;">《用户协议和隐私政策》</a>后下载安装</p>
+            <div class="modal-buttons">
+                <button onclick="download();">同意并下载</button>
+                <button onclick="closeModal();">不同意</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showModal() {
+            document.getElementById('modal').style.display = 'block';
+        }
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+        function download() {
+            // 在这里添加下载逻辑
+            alert("开始下载...");
+            closeModal();
+        }
+    </script>
 </body>
 </html>
