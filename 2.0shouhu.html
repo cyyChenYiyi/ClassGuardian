@@ -35,10 +35,18 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
+    @font-face {
+        font-family: 'Source Han Sans';
+        src: url('fonts/SourceHanSans-Regular.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
     body {  
-        font-family: 'Microsoft YaHei';  
+        font-family: 'Source Han Sans', 'Microsoft YaHei'; /* 添加思源黑体 */
         background-image: url("https://cyychenyiyi.github.io/ClassGuardian/New-term-white.png");  
-        background-size: 100% 100%; /* 修改这里 */
+        background-size: cover; /* 覆盖整个视口，不重复 */
+        background-attachment: fixed; /* 背景图像固定 */
         background-position: center;  
         color: #ffffff;  
         display: flex;  
@@ -47,7 +55,7 @@
         align-items: center;  
         height: 100vh;  
         margin: 0;  
-        min-height: 100vh; /* 确保至少占据视口高度 */  
+        min-height: 100vh;  
     }
 
 
@@ -667,6 +675,7 @@
 
 
 </script>
+<link rel="preload" as="image" href="https://cyychenyiyi.github.io/ClassGuardian/New-term-white.png">
 </head>
 <body>
 
