@@ -88,6 +88,20 @@ p {
     cursor: pointer;  
     z-index: 1000; /* 确保返回按钮位于顶层 */  
 }  
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loader {
+  border: 6px solid #f3f3f3; /* Light grey */
+  border-top: 6px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
 </style>
 
 </head>
@@ -95,7 +109,12 @@ p {
 <img id="back-button" src="https://static.codemao.cn/coco/player/unstable/rkL7m-SuC.image/png?hash=FlwaI54dHYkkwWs4hkffhMJiY0_9" alt="返回" width="30" height="30">
 <div id="card">
 <div class="section">
-<img id="qr-image" alt="二维码未显示，请联系电教员，抱歉。">
+<div class="section">
+  <div id="qr-image-loader" class="loader" style="display: none;"></div> <!-- 加载动画的div -->
+  <img id="qr-image" alt="二维码未显示，请联系电教员，抱歉。">
+  <p>尊敬的老师您好，请您使用微信或其他支持扫码的APP扫码查看密码和校验码，感谢您的合作</p>
+</div>
+
 <p>尊敬的老师您好，请您使用微信或其他支持扫码的APP扫码查看密码和校验码，感谢您的合作</p>
 </div>
 <div id="divider"></div>
@@ -107,23 +126,32 @@ p {
 </div>
 <script>
 window.onload = function() {
-    const codes = {
-        password: Math.floor(Math.random() * 10000),
-        verificationCode: Math.floor(Math.random() * 10000)
-    };
-    const qrText = `https://cyychenyiyi.github.io/ClassGuardian/miama?mima=${codes.password}&jiaoyanma=${codes.verificationCode}`;
-    const qrSize = 200; // 二维码的尺寸
-    const qrURL = `https://api.qrtool.cn/?text=${encodeURIComponent(qrText)}&size=150&margin=0&level=H`;
-    document.getElementById('qr-image').src = qrURL;
+  const codes = {
+    password: Math.floor(Math.random() * 10000),
+    verificationCode: Math.floor(Math.random() * 10000)
+  };
+  const qrText = `https://cyychenyiyi.github.io/ClassGuardian/miama?mima=${codes.password}&jiaoyanma=${codes.verificationCode}`;
+  const qrSize = 200; // 二维码的尺寸
+  const qrURL = `https://api.qrtool.cn/?text=${encodeURIComponent(qrText)}&size=150&margin=0&level=H`;
 
-    document.getElementById('verifyButton').onclick = function() {
-        var passwordInput = document.getElementById('password').value;
-        var verificationCodeInput = document.getElementById('verificationCode').value;
-        if (passwordInput == codes.password && verificationCodeInput == codes.verificationCode) {
-            window.location.href = 'https://cyychenyiyi.github.io/ClassGuardian/closeok';
-        }
-    };
+  // 显示加载动画
+  document.getElementById('qr-image-loader').style.display = 'block';
+  document.getElementById('qr-image').onload = function() {
+    // 当二维码加载完成时，隐藏加载动画
+    document.getElementById('qr-image-loader').style.display = 'none';
+  };
+
+  document.getElementById('qr-image').src = qrURL;
+  
+  document.getElementById('verifyButton').onclick = function() {
+    var passwordInput = document.getElementById('password').value;
+    var verificationCodeInput = document.getElementById('verificationCode').value;
+    if (passwordInput == codes.password && verificationCodeInput == codes.verificationCode) {
+      window.location.href = 'https://cyychenyiyi.github.io/ClassGuardian/closeok';
+    }
+  };
 };
+
   // 添加返回按钮的点击事件
   document.getElementById('back-button').onclick = function() {
     window.location.href = 'https://cyychenyiyi.github.io/ClassGuardian/2.0shouhu';
