@@ -4,67 +4,90 @@
 <meta charset="UTF-8">
 <title>验证页面</title>
 <style>
-body {
-    background-color: lightblue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-#card {
-    background-color: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px); /* 毛玻璃效果 */
-    width: 800px;
-    height: 350px;
-    display: flex;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    border-radius: 20px; /* 圆角 */
-}
-.section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-#divider {
-    background-color: white;
-    width: 2px;
-    height: 100%;
-}
-.input-field {
-    width: 80%;
-    margin-top: 10px;
-    height: 50px; /* 调整高度 */
-    border: none; /* 去除描边 */
-    padding: 10px;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-}
-button {
-    width: 70%; /* 按钮长度 */
-    margin-top: 20px;
-    height: 50px; /* 按钮高度 */
-    font-size: 18px; /* 字体大小 */
-    cursor: pointer;
-}
-#qr-image {
-    padding: 10px;
-    background: white;
-    box-shadow: 0 0px 0px rgba(0,0,0,0.25);
-    border-radius: 10px; /* 圆角 */
-}
-p {
-    padding: 10px;
-    text-align: center;
-}
-#back-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    cursor: pointer;
-}
+body {  
+    font-family: 'Source Han Sans', 'Microsoft YaHei';  
+    background-image: url("https://cyychenyiyi.github.io/ClassGuardian/New-term-white.png");  
+    background-size: 100% 100%;  
+    background-attachment: fixed;  
+    background-position: center;  
+    color: #333; /* 调整为适合背景的字体颜色 */  
+    display: flex;  
+    flex-direction: column;  
+    justify-content: center;  
+    align-items: center;  
+    height: 100vh;  
+    margin: 0;  
+    min-height: 100vh;  
+}  
+  
+#card {  
+    background-color: rgba(255, 255, 255, 0.9); /* 提高背景透明度以适应新背景 */  
+    backdrop-filter: blur(10px);  
+    width: 800px;  
+    height: 350px;  
+    display: flex;  
+    border: 1px solid #ccc;  
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* 加深阴影以提高对比度 */  
+    border-radius: 20px;  
+    text-align: center; /* 确保内容居中 */  
+}  
+  
+.section {  
+    flex: 1;  
+    display: flex;  
+    flex-direction: column;  
+    align-items: center;  
+    justify-content: center;  
+}  
+  
+#divider {  
+    background-color: rgba(255, 255, 255, 0.8); /* 调整分隔线颜色以提高对比度 */  
+    width: 2px;  
+    height: 100%;  
+}  
+  
+.input-field {  
+    width: 80%;  
+    margin-top: 10px;  
+    height: 50px;  
+    border: none;  
+    padding: 10px;  
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2); /* 加深内阴影以提高对比度 */  
+    color: #333; /* 确保文本颜色清晰可见 */  
+}  
+  
+button {  
+    width: 70%;  
+    margin-top: 20px;  
+    height: 50px;  
+    font-size: 18px;  
+    cursor: pointer;  
+    background-color: #007BFF; /* 蓝色背景按钮 */  
+    border: none;  
+    color: white;  
+    border-radius: 5px;  
+}  
+  
+#qr-image {  
+    padding: 10px;  
+    background: white;  
+    box-shadow: 0 0px 10px rgba(0,0,0,0.25); /* 加深阴影以提高二维码的可视性 */  
+    border-radius: 10px;  
+}  
+  
+p {  
+    padding: 10px;  
+    text-align: center;  
+    color: #333; /* 确保文本颜色清晰可见 */  
+}  
+  
+#back-button {  
+    position: absolute;  
+    top: 20px; /* 调整位置以避免与背景冲突 */  
+    left: 20px;  
+    cursor: pointer;  
+    z-index: 1000; /* 确保返回按钮位于顶层 */  
+}  
 </style>
 
 </head>
