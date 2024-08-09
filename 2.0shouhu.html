@@ -474,6 +474,26 @@
             alert('密码错误');
         }
     }
+    // 检测版本号
+    function checkVersion() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const version = urlParams.get('version'); // 获取 URL 中的 version 参数
+    
+        if (version !== '2.0.0') {
+            window.location.href = 'https://cyychenyiyi.github.io/ClassGuardian/updata'; // 跳转到更新页面
+        }
+    }
+    
+    // 在页面加载时检查版本
+    window.onload = function () {
+        checkVersion(); // 检查版本
+        document.body.requestFullscreen();
+        startBreakCountdown();
+        generateDanmaku();
+        fetchDailyEnglish();
+        hideLoadingScreen();
+        switchMode('complex');
+    };
 
     function closeBrowserWindow() {
         if (navigator.userAgent.indexOf("Chrome") != -1) {
