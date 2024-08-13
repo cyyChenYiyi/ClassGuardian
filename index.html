@@ -3,118 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>官网 | ClassGuardian</title>
+    <title>ClassGuardian 官网</title>
+    <link rel="icon" href="logo_white.png" type="image/png">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #09051F;
-            color: white;
             margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            text-align: center;
-        }
-        h1 {
-            font-size: 50px;
-        }
-        .download-buttons button {
-            background-color: transparent;
-            border: none;
-            padding: 0;
-            margin: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            width: 265px;
-            height: 60px;
-            background-size: cover;
-        }
-        .download-buttons button:hover {
-            opacity: 0.8;
-        }
-        p {
-            margin: 30px 0;
-            font-size: 33px;
-        }
-        .logo {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 250px;
-            height: auto;
-        }
-        /* 修改的样式 */
-        #modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            border-radius: 10px;
-            color: black; /* 设置文本颜色为黑色 */
-            font-size: 16px; /* 设置字体大小为正常文本大小 */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
         }
 
-        .modal-content h2 {
-            font-size: 24px; /* 设置标题字体大小 */
+        header {
+            background: linear-gradient(135deg, #5C4B99, #B76E79);
+            color: #ffffff;
+            padding: 60px;
+            text-align: center;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        .modal-buttons button {
-            background-color: #5C4B99; /* 紫色背景 */
+
+        header img {
+            width: 400px; /* 放大LOGO */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            width: 100%;
+            max-width: 1200px;
+            box-sizing: border-box;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card img {
+            width: 66%; /* 增大图片尺寸 */
+            height: auto;
+            border-radius: 15px;
+            margin-right: 20px;
+        }
+
+        .card-content {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-content-full {
+            width: 100%; /* 确保文本占满整个卡片 */
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #5C4B99;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .download {
+            background: linear-gradient(135deg, #D3E5FF, #A0C4FF);
+            border-radius: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .download button {
+            background-color: #5C4B99;
             color: white;
-            padding: 10px 20px;
-            margin: 10px;
+            padding: 15px 30px;
+            font-size: 1.2em;
             border: none;
-            border-radius: 5px;
+            border-radius: 30px;
             cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .download button:hover {
+            background-color: #48377d;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background-color: #333;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 响应式布局 */
+        @media (max-width: 768px) {
+            .card {
+                flex-direction: column;
+            }
+
+            .card img {
+                width: 100%; /* 图片在手机端宽度为100% */
+                margin-bottom: 20px;
+                margin-right: 0;
+            }
+
+            .card-content {
+                width: 100%;
+            }
+
+            header img {
+                width: 300px; /* 手机端适应的LOGO大小 */
+            }
+
+            .download button {
+                width: 100%;
+                padding: 15px;
+                font-size: 1em;
+            }
         }
     </style>
 </head>
 <body>
-    <img class="logo" src="logo_white.png" alt="LOGO">
+    <header>
+        <img src="https://cyychenyiyi.github.io/ClassGuardian/logo_white.png" alt="ClassGuardian Logo">
+    </header>
+
     <div class="container">
-        <h1>ClassGuardian-新一代课间守护软件</h1>
-        <p>让你再也没有学生课间玩电脑的烦恼</p>
-        <div class="download-buttons">
-            <button onclick="showModal();" style="background-image: url('https://www.easyartx.com/assets/img_3-9428196a.png');"></button>
-            <button onclick="showModal();" style="background-image: url('https://www.easyartx.com/assets/img_4-ba5e7cef.png');"></button>
+        <div class="card">
+            <img src="https://cyychenyiyi.github.io/ClassGuardian/picture1.png" alt="ClassGuardian Image 1">
+            <div class="card-content">
+                <h2>关于ClassGuardian</h2>
+                <p>ClassGuardian是一款创新的软件工具，专为课堂管理设计。它能在课间自动锁定教室电脑，确保学生专注于学习，并保护学校设备的安全。</p>
+            </div>
         </div>
-    </div>
-    <div id="modal">
-        <div class="modal-content">
-            <h2>阅读并同意《用户协议和隐私政策》</h2>
-            <p>请您阅读并同意<a href="https://cyychenyiyi.github.io/ClassGuardian/User-Agreement" style="color: blue;">《用户协议和隐私政策》</a>后下载安装</p>
-            <div class="modal-buttons">
-                <button onclick="download();">同意并下载</button>
-                <button onclick="closeModal();">不同意</button>
+
+        <div class="card">
+            <img src="https://cyychenyiyi.github.io/ClassGuardian/picture2.png" alt="ClassGuardian Image 2">
+            <div class="card-content">
+                <h2>功能亮点</h2>
+                <p>ClassGuardian集成了密码验证、异常行为记录和便捷的管理后台。所有功能均在一个窗口中实现，界面简洁直观，并支持自定义背景图片，适应不同的校园节日和活动。</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content-full">
+                <h2>ClassGuardian资讯</h2>
+                <p>新学期快乐！ClassGuardian在这个学期为您带来了全新的升级功能。我们不仅优化了用户界面，还增强了密码验证和异常行为记录功能，让课堂管理更加高效。</p>
+                <p>此外，我们还增加了对不同节日和活动的背景图片支持，帮助您打造更符合校园氛围的课堂体验。敬请期待后续的更多更新，让ClassGuardian成为您教学管理的得力助手！</p>
+            </div>
+        </div>
+
+        <div class="card download">
+            <div class="card-content">
+                <h2>立即下载</h2>
+                <p>下载ClassGuardian前，请务必阅读并同意 <a href="https://cyychenyiyi.github.io/ClassGuardian/User-Agreement" target="_blank">《用户协议》</a>。</p>
+                <button onclick="startDownload()">下载 ClassGuardian</button>
             </div>
         </div>
     </div>
+
+    <footer>
+        <p>© 2024 陈奕羿 | ClassGuardian 项目</p>
+    </footer>
+
     <script>
-        function showModal() {
-            document.getElementById('modal').style.display = 'block';
-        }
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-        function download() {
-            // 在这里添加下载逻辑
-            alert("开始下载...");
-            closeModal();
+        function startDownload() {
+            if (window.innerWidth < 768) { // 检测是否为手机端
+                alert("请使用电脑访问cyychenyiyi.github.io/ClassGuardian进行下载。");
+            } else {
+                const agree = confirm("请确认您已阅读并同意《用户协议》。");
+                if (agree) {
+                    window.location.href = '下载链接'; // 请替换为实际的下载链接
+                }
+            }
         }
     </script>
 </body>
