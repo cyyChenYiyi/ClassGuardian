@@ -59,12 +59,51 @@
             width: 100%;
             color: #ccc;
         }
+        footer.disclaimer span {
+            color: #ff8080;
+            text-decoration: underline;
+            cursor: pointer;
+        }
         #current-time {
             position: absolute;
             top: 10px;
             right: 10px;
             font-size: 16px;
             color: white;
+        }
+        /* 弹窗样式 */
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        #modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            color: black;
+        }
+        #modal-content button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #5C4B99;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #modal-content button:hover {
+            background-color: #3e3470;
         }
     </style>
 </head>
@@ -84,8 +123,16 @@
     </div>
 
     <footer class="disclaimer">
-        使用即代表同意《用户协议》《隐私政策》《儿童隐私政策》（由于守护中无法查看网页，请使用其他设备在官网中查看）。请勿将此软件用于非法用途。©️2024-2025 Chenyiyi拥有最终解释权。AI技术由自研天启mind提供支持。
+        使用即代表同意《用户协议》《隐私政策》《儿童隐私政策》（由于守护中无法查看网页，请使用其他设备在官网中查看）。请勿将此软件用于非法用途。©️2024-2025 Chenyiyi拥有最终解释权。AI技术由自研天启mind提供支持。<span id="bg-issue">背景图片不适合展示</span>
     </footer>
+
+    <!-- 弹窗内容 -->
+    <div id="modal">
+        <div id="modal-content">
+            <p>对您的影响深感抱歉，由于使用AI绘画，我们无法保证背景图片的高质量。已反馈，24小时内进行处理。</p>
+            <button onclick="closeModal()">确定</button>
+        </div>
+    </div>
 
     <script>
         // 显示当前时间
@@ -112,6 +159,18 @@
                     timer.textContent = "开始上课";
                 }
             }, 1000);
+        }
+
+        // 背景图片不适合展示点击事件
+        document.getElementById('bg-issue').onclick = function() {
+            document.body.style.backgroundColor = 'black';
+            document.body.style.backgroundImage = 'none';
+            document.getElementById('modal').style.display = 'flex';
+        };
+
+        // 关闭弹窗
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
         }
 
         // 页面加载完成后启动倒计时
