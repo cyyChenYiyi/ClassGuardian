@@ -148,6 +148,12 @@
             const { duration } = getNextBreakTime();
             let seconds = duration;
 
+            // 检查是否已经是上课时间，如果是，立即跳转
+            if (seconds <= 0) {
+                window.location.href = "https://cyychenyiyi.github.io/ClassGuardian/closeok";
+                return;
+            }
+
             const interval = setInterval(() => {
                 const mins = Math.floor(seconds / 60);
                 const secs = seconds % 60;
@@ -193,7 +199,7 @@
                 { hour: 17, minute: 20 }
             ];
 
-            // 计算当前时间距离今天最近的下课时间
+            // 计算当前时间距离最近的下课时间
             let nearestBreakTime = breakTimes.find(time => {
                 let breakTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), time.hour, time.minute);
                 return now < breakTime;
@@ -202,6 +208,7 @@
             // 如果已经过了今天所有的下课时间，则取明天的第一个下课时间
             if (!nearestBreakTime) {
                 nearestBreakTime = breakTimes[0];
+                now.setDate(now.getDate() + 1); // 设定为明天
             }
 
             // 计算下课时间与当前时间的时间差
