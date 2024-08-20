@@ -30,6 +30,7 @@ body {
     box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* 加深阴影以提高对比度 */  
     border-radius: 20px;  
     text-align: center; /* 确保内容居中 */  
+    margin-bottom: 20px; /* 增加与下面卡片的间距 */
 }  
   
 .section {  
@@ -88,6 +89,7 @@ p {
     cursor: pointer;  
     z-index: 1000; /* 确保返回按钮位于顶层 */  
 }  
+  
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -102,26 +104,60 @@ p {
   animation: spin 2s linear infinite;
 }
 
-</style>
+/* 新增的卡片样式 */
+#explanation-card {
+    background-color: rgba(255, 255, 255, 0.9);  
+    backdrop-filter: blur(10px);  
+    width: 800px;  
+    padding: 20px;  
+    border: 1px solid #ccc;  
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);  
+    border-radius: 20px;  
+    text-align: center;  
+    margin-bottom: 20px;  
+}
 
+#explanation-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#explanation-content {
+    font-size: 18px;
+}
+
+</style>
 </head>
 <body>
 <img id="back-button" src="https://static.codemao.cn/coco/player/unstable/rkL7m-SuC.image/png?hash=FlwaI54dHYkkwWs4hkffhMJiY0_9" alt="返回" width="30" height="30">
 <div id="card">
-<div class="section">
-<div class="section">
-  <div id="qr-image-loader" class="loader" style="display: none;"></div> <!-- 加载动画的div -->
-  <img id="qr-image" alt="二维码未显示，请联系电教员，抱歉。">
-  <p>尊敬的老师您好，请您使用微信或其他支持扫码的APP扫码查看密码和校验码，感谢您的合作</p>
+  <div class="section">
+    <div id="qr-image-loader" class="loader" style="display: none;"></div> <!-- 加载动画的div -->
+    <img id="qr-image" alt="二维码未显示，请联系电教员，抱歉。">
+    <p>尊敬的老师您好，请您使用微信或其他支持扫码的APP扫码查看密码和校验码，感谢您的合作</p>
+  </div>
+  <div id="divider"></div>
+  <div class="section">
+    <input type="password" id="password" class="input-field" placeholder="输入密码">
+    <input type="password" id="verificationCode" class="input-field" placeholder="输入校验码">
+    <button id="verifyButton">确认</button>
+  </div>
 </div>
+
+<!-- 新增的说明卡片 -->
+<div id="explanation-card">
+  <div id="explanation-title">为什么需要扫码验证</div>
+  <div id="explanation-content">
+    由于本班课间玩电脑现象严重，根据班主任要求，已开启课间锁机。对您造成的影响深感抱歉。
+  </div>
+
+  <div id="explanation-title">我没有带手机</div>
+  <div id="explanation-content">
+    您可以联系电教员。对您造成的影响深感抱歉。
+  </div>
 </div>
-<div id="divider"></div>
-<div class="section">
-<input type="password" id="password" class="input-field" placeholder="输入密码">
-<input type="password" id="verificationCode" class="input-field" placeholder="输入校验码">
-<button id="verifyButton">确认</button>
-</div>
-</div>
+
 <script>
 window.onload = function() {
   const codes = {
