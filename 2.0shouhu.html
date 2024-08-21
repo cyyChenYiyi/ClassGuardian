@@ -120,6 +120,12 @@
         </div>
         <button onclick="window.location.href='https://cyychenyiyi.github.io/ClassGuardian/close';">开始上课</button>
         <p style="margin-top: 10px; font-size: 18px;">或插入ClassGuardian-Ukey</p>
+        <p style="color: #ffcc00; margin-top: 10px; font-size: 16px;">
+            该系统确保课间锁机，防止课间误操作。您可随时使用Ukey解锁。若有紧急情况，请点击<a href="#" onclick="unlockForTeachers()">教师模式</a>。
+        </p>
+        <p style="color: #00cc66; margin-top: 10px; font-size: 14px;">
+            系统稳定性经过严格测试，确保在上课时自动解锁。
+        </p>
     </div>
 
     <footer class="disclaimer">
@@ -135,6 +141,14 @@
     </div>
 
     <script>
+        function unlockForTeachers() {
+            const adminPassword = prompt('请输入管理员密码进行解锁:');
+            if (adminPassword === 'your_admin_password') {
+                window.location.href = "https://cyychenyiyi.github.io/ClassGuardian/closeok";
+            } else {
+                alert('密码错误，请联系管理员。');
+            }
+        }
         // 显示当前时间
         function updateTime() {
             const now = new Date();
