@@ -3,158 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClassGuardian新版守护</title>
+    <title>ClassGuardian</title>
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: "微软雅黑", Arial, sans-serif;
             color: white;
             background-image: url("https://img.picui.cn/free/2024/08/19/66c298d844d05.png");
             background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             text-align: center;
+            overflow: hidden;
         }
-        .info-panel {
-            margin-bottom: 20px;
+
+        #loader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease-in-out;
         }
+
+        #loader img {
+            width: 300px;
+            height: auto;
+            filter: grayscale(100%);
+            transition: filter 0.5s ease-in-out, transform 0.5s;
+        }
+
+        #loader.complete img {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         h1 {
             font-size: 36px;
             margin: 0;
         }
+
         p {
             font-size: 24px;
             margin: 10px 0;
         }
+
         .timer {
             font-size: 40px;
             margin: 20px 0;
         }
+
         .schedule img {
             width: 200px;
             height: auto;
             margin-bottom: 20px;
         }
+
         button {
-            background-color: white;
-            color: black;
+            background-color: #ff8080;
+            color: white;
             font-size: 22px;
             border: none;
             border-radius: 8px;
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, background-color 0.3s;
             padding: 12px 24px;
             cursor: pointer;
         }
+
         button:hover {
             transform: scale(1.1);
+            background-color: #ff4d4d;
         }
+
         footer.disclaimer {
-            position: absolute;
+            position: fixed;
             bottom: 10px;
             font-size: 12px;
             text-align: center;
             width: 100%;
-            color: #ccc;
+            color: rgba(255, 255, 255, 0.8); /* 白色且略微透明 */
         }
+
         footer.disclaimer span {
             color: #ff8080;
             text-decoration: underline;
             cursor: pointer;
         }
+
         #current-time {
-            position: absolute;
-            top: 10px;
+            position: fixed;
+            bottom: 10px;
             right: 10px;
             font-size: 16px;
-            color: white;
-        }
-        /* 弹窗样式 */
-        #modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-        }
-        #modal-content {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            max-width: 400px;
-            color: black;
-        }
-        #modal-content button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            border: none;
-            background-color: #5C4B99;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        #modal-content button:hover {
-            background-color: #3e3470;
+            color: rgba(255, 255, 255, 0.8); /* 白色且略微透明 */
         }
     </style>
+    <link rel="preload" href="https://chenyiyi.top/ClassGuardian/close.html" as="document">
 </head>
 <body>
-    <div id="current-time"></div>
-
-    <div class="info-panel">
-        <h1>恭喜同学们升入「初二」年级</h1>
-        <p>新一代ClassGuardian「天启守护架构」守护课间电脑安全</p>
-        <p style="font-size: 28px;">距离上课还有：</p>
-        <div class="timer">loading……</div>
-        <div class="schedule">
-            <img src="https://cyychenyiyi.github.io/ClassGuardian/schedule.png" alt="课程表图片">
-        </div>
-        <button onclick="window.location.href='https://cyychenyiyi.github.io/ClassGuardian/close';">开始上课</button>
-        <p style="margin-top: 10px; font-size: 18px;">或插入ClassGuardian-Ukey</p>
-    
-        <!-- 缩小的卡片容器 -->
-        <div style="background-color: rgba(255, 255, 255, 0.8); padding: 15px; border-radius: 10px; width: 80%; max-width: 1000px; margin: 20px auto; box-sizing: border-box; text-align: center;">
-            <p style="color: black; font-size: 14px;">
-                该系统旨在防止学生课间玩电脑，确保电脑安全。您可随时使用Ukey解锁。若有紧急情况，请点击<a href="#" onclick="unlockForTeachers()" style="color: #5C4B99;">教师模式</a>。
-            </p>
-            <p style="color: black; font-size: 14px;">
-                系统已通过<b style="font-size: 16px;">超500项</b>安全测试，确保在上课时自动解锁，不影响正常教学。
-            </p>
-            <p style="color: black; font-size: 14px;">
-                🔐由阿里云提供安全云服务。
-            </p>
-        </div>
+    <div id="loader">
+        <img src="https://chenyiyi.top/ClassGuardian/logo_black.png" alt="ClassGuardian Logo">
+        <p id="loading-text">正在准备……</p>
     </div>
-    <footer class="disclaimer">
-        使用即代表同意《用户协议》《隐私政策》《儿童隐私政策》（由于守护中无法查看网页，请使用其他设备在官网中查看）。请勿将此软件用于非法用途。©️2024-2025 Chenyiyi拥有最终解释权。AI技术由自研天启mind提供支持。<span id="bg-issue">背景图片不适合展示</span>
+    <div id="current-time" class="fade-in-up"></div>
+    <h1 class="fade-in-up">恭喜同学们升入「初二」年级</h1>
+    <p class="fade-in-up">新一代ClassGuardian「天启守护架构」守护课间电脑安全</p>
+    <p class="fade-in-up" style="font-size: 28px;">距离上课还有：</p>
+    <div class="timer fade-in-up">loading……</div>
+    <div class="schedule fade-in-up">
+        <img src="https://chenyiyi.top/ClassGuardian/schedule.png" alt="课程表图片">
+    </div>
+    <button class="fade-in-up" onclick="onButtonClick();">开始上课</button>
+    <p class="fade-in-up" style="margin-top: 10px; font-size: 18px;">或插入ClassGuardian-Ukey</p>
+    <footer class="disclaimer fade-in-up">
+        使用即代表同意《用户协议》《隐私政策》《儿童隐私政策》。<br>
+        请勿将此软件用于非法用途。©️2024-2025 Chenyiyi拥有最终解释权。
     </footer>
-
-    <!-- 弹窗内容 -->
-    <div id="modal">
-        <div id="modal-content">
-            <p>对您的影响深感抱歉，由于使用AI绘画，我们无法保证背景图片的高质量。已反馈，24小时内进行处理。</p>
-            <button onclick="closeModal()">确定</button>
-        </div>
-    </div>
-
     <script>
-        function unlockForTeachers() {
-            const adminPassword = prompt('请输入管理员密码进行解锁:');
-            if (adminPassword === 'your_admin_password') {
-                window.location.href = "https://cyychenyiyi.github.io/ClassGuardian/closeok";
-            } else {
-                alert('密码错误，请联系管理员。');
-            }
-        }
         // 显示当前时间
         function updateTime() {
             const now = new Date();
@@ -168,9 +154,8 @@
             const { duration } = getNextBreakTime();
             let seconds = duration;
 
-            // 检查是否已经是上课时间，如果是，立即跳转
             if (seconds <= 0) {
-                window.location.href = "https://cyychenyiyi.github.io/ClassGuardian/closeok";
+                window.location.href = "https://chenyiyi.top/ClassGuardian/closeok.html";
                 return;
             }
 
@@ -183,29 +168,76 @@
                 if (seconds < 0) {
                     clearInterval(interval);
                     timer.textContent = "开始上课";
-                    window.location.href = "https://cyychenyiyi.github.io/ClassGuardian/closeok";
+                    window.location.href = "https://chenyiyi.top/ClassGuardian/closeok.html";
                 }
             }, 1000);
         }
 
-        // 背景图片不适合展示点击事件
-        document.getElementById('bg-issue').onclick = function() {
-            document.body.style.backgroundColor = 'black';
-            document.body.style.backgroundImage = 'none';
-            document.getElementById('modal').style.display = 'flex';
-        };
-
-        // 关闭弹窗
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-
-        // 页面加载完成后启动倒计时
+        // 页面加载完成后启动倒计时和动画
         window.onload = function() {
             startCountdown();
             updateTime();
+            simulateLoading();
         };
 
+        function simulateLoading() {
+            const loader = document.getElementById('loader');
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 10;
+                if (progress >= 100) {
+                    loader.classList.add('complete');
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        loader.style.opacity = '0';
+                        setTimeout(() => {
+                            loader.style.display = 'none';
+                            showContent(); // 显示内容
+                        }, 500);
+                    }, 500);
+                }
+            }, 200);
+
+            // 加载超时提示
+        setTimeout(() => {
+                document.getElementById('loading-text').textContent = '加载过慢请尝试刷新';
+                document.getElementById('loading-text').style.cursor = 'pointer';
+                document.getElementById('loading-text').onclick = () => location.reload();
+            }, 20000); // 20秒后改变文本提示并添加点击刷新功能
+        }
+
+        // 显示页面内容
+        function showContent() {
+            const elements = document.querySelectorAll('.fade-in-up');
+            elements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.classList.add('show');
+                }, index * 200); // 逐个延迟显示
+            });
+        }
+
+        // 预加载并重定向
+        function preloadAndRedirect() {
+            const link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.href = 'https://chenyiyi.top/ClassGuardian/close.html';
+            document.head.appendChild(link);
+
+            link.onload = () => {
+                window.location.href = link.href;
+            };
+
+            setTimeout(() => {
+                window.location.href = link.href;
+            }, 3000); // 如果预加载失败，3秒后重定向
+        }
+
+        // 点击按钮时预加载并跳转
+        function onButtonClick() {
+            preloadAndRedirect();
+        }
+
+        // 获取下一个课间时间
         function getNextBreakTime() {
             const now = new Date();
             const breakTimes = [
@@ -218,23 +250,24 @@
                 { hour: 16, minute: 25 },
                 { hour: 17, minute: 20 }
             ];
-
-            // 计算当前时间距离最近的下课时间
             let nearestBreakTime = breakTimes.find(time => {
                 let breakTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), time.hour, time.minute);
                 return now < breakTime;
             });
 
-            // 如果已经过了今天所有的下课时间，则取明天的第一个下课时间
             if (!nearestBreakTime) {
                 nearestBreakTime = breakTimes[0];
-                now.setDate(now.getDate() + 1); // 设定为明天
+                nearestBreakTime.tomorrow = true;
             }
 
-            // 计算下课时间与当前时间的时间差
-            let nextBreakTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), nearestBreakTime.hour, nearestBreakTime.minute);
-            let duration = Math.floor((nextBreakTime - now) / 1000);
-            return { breakTime: nextBreakTime, duration: duration };
+            let breakTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), nearestBreakTime.hour, nearestBreakTime.minute);
+
+            if (nearestBreakTime.tomorrow) {
+                breakTime.setDate(breakTime.getDate() + 1);
+            }
+
+            const duration = Math.floor((breakTime - now) / 1000);
+            return { duration, breakTime };
         }
     </script>
 </body>
